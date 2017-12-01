@@ -35,7 +35,7 @@ class CodeReviews
     @garbage_last_collection = 0      # counter for last collection
     @garbage_job = null
 
-    @karma_monthly_rankings_schedule = '0 0 1 * *'       # midnight on the first of every month
+    @karma_monthly_rankings_schedule = '1 0 1 * *'       # 1 minute after midnight on the first of every month
     @karma_monthly_rankings_reset = null
 
     # Set up middleware
