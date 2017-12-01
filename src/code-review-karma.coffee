@@ -58,6 +58,10 @@ module.exports = (robot) ->
     # coffeelint: enable=max_line_length
       code_review_karma.monthly_rankings(msg)
 
+    robot.respond /flush the monthly cr scores/i, (msg) ->
+      code_review_karma.flush_monthly_scores()
+      msg.send "ok"
+
     robot.respond /merge ([-_a-z0-9]+)(?:'s?)? cr scores into ([-_a-z0-9]+)/i, (msg) ->
       old_user = msg.match[1]
       new_user = msg.match[2]
