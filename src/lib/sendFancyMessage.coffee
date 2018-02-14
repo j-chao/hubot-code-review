@@ -6,8 +6,8 @@
 module.exports = (robot, room, attachments, text) ->
   if robot.adapterName isnt "slack"
     fallback_text = text || ''
-    for index, attachment of attachments
-      fallback_text += "\n#{attachment.fallback}"
+    for attachment in attachments
+      fallback_text += "\n#{attachment}"
     robot.messageRoom room, fallback_text.replace(/\n$/, "")
   else
     # Working around a Slack for Android bug 2016-08-30 by supplying
