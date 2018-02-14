@@ -1,22 +1,22 @@
 {
-  "name": "hubot-code-review",
+  "name": "hubot-code-review-flowdock",
   "version": "0.6.1",
   "author": "Alley Interactive <ops+hubot@alleyinteractive.com>",
-  "description": "A Hubot script for GitHub code review on Slack",
+  "description": "A Hubot script for GitHub code review on Flowdock",
   "main": "index.coffee",
   "repository": {
     "type": "git",
-    "url": "https://github.com/alleyinteractive/hubot-code-review"
+    "url": "https://github.com/j-chao/hubot-code-review"
   },
   "keywords": [
     "hubot",
     "code review",
     "codereview",
     "github",
-    "slack",
+    "flowdock",
     "chatops"
   ],
-  "homepage": "https://github.com/alleyinteractive/hubot-code-review",
+  "homepage": "https://github.com/j-chao/hubot-code-review",
   "scripts": {
     "test": "HUBOT_CODE_REVIEW_EMOJI_APPROVE=true node_modules/.bin/jasmine-node --verbose --coffee --color --forceexit test/",
     "lint": "node_modules/.bin/coffeelint src/",

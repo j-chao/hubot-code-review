@@ -338,38 +338,38 @@ class CodeReviews
       reviews["pretext"] = "There are no " + status + " code reviews for this room."
     return reviews
 
- # Send a fancy message to a room with CRs matching the status
- #
- # @parm string room Name of room
- # @param bool verbose Whether to send a message when requested list is empty
- # @param string status CR status to list,
- #     can be 'new', 'all', 'claimed', 'approved', 'closed', 'merged'
- # @return none
- send_list: (room, verbose = false, status = 'new') ->
-   # Look for CRs with the correct status
-   message = @list room, verbose, status
-
-   intro_text = message["pretext"]
-   if message["cr"].length != 0 or verbose is true
-     # To handle the special slack case of only showing 5 lines in an attachment,
-     # we break every CR into its own attachment
-     attachments = []
-     for message in message["cr"]
-       if /day[s]? ago/.test(message)
-         color = "#4c0000" # blackish/red
-       else if /hour[s]? ago/.test(message)
-         color = "#FF0000" #red
-       else if /[3-5][0-9] minutes ago/.test(message)
-         color = "#ffb732" #yellowy/orange
-       else
-         color = "#cceadb" # triadic green
-       attachments.push message
-         #fallback: message
-         #text: message
-         #mrkdwn_in: ["text"]
-         #color: color
-
-     sendFancyMessage @robot, room, attachments, intro_text
+  # Send a fancy message to a room with CRs matching the status
+  #
+  # @parm string room Name of room
+  # @param bool verbose Whether to send a message when requested list is empty
+  # @param string status CR status to list,
+  #     can be 'new', 'all', 'claimed', 'approved', 'closed', 'merged'
+  # @return none
+  send_list: (room, verbose = false, status = 'new') ->
+    # Look for CRs with the correct status
+    message = @list room, verbose, status
+ 
+    intro_text = message["pretext"]
+    if message["cr"].length != 0 or verbose is true
+      # To handle the special slack case of only showing 5 lines in an attachment,
+      # we break every CR into its own attachment
+      attachments = []
+      for message in message["cr"]
+        if /day[s]? ago/.test(message)
+          color = "#4c0000" # blackish/red
+        else if /hour[s]? ago/.test(message)
+          color = "#FF0000" #red
+        else if /[3-5][0-9] minutes ago/.test(message)
+          color = "#ffb732" #yellowy/orange
+        else
+          color = "#cceadb" # triadic green
+        attachments.push message
+          #fallback: message
+          #text: message
+          #mrkdwn_in: ["text"]
+          #color: color
+ 
+      sendFancyMessage @robot, room, attachments, intro_text
 
   # Recurring reminder when there are *unclaimed* CRs
   #
